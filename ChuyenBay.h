@@ -19,11 +19,11 @@ class ChuyenBay
 	private:
 		char maCB[MAX_MA_CB]; // duy I tren san bay;
 		char sanBayDen[MAX_SAN_BAY];
-		int trangThai; // 0: HUY	1: CON VE	2: HET VE	3: HOAN TAT
+		int trangThai;
 		Date ngKhoiHanh;
 		char** dsVe = NULL; // MAX = so cho ngoi
 		
-		int soVe;
+		int soVe; // tong so ve
 		
 	public:
 		

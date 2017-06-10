@@ -42,7 +42,9 @@ char menuPhu_HK[5][MAX_TEXT_MENU] = {"Xem HK",
 									 "In (maCB)"};
 
 void QLMB_ThongKe(short x1, short y1, short x2, short y2){
-	// tinh luon nhung cb bi huy
+	/*
+		Tong so cac ChuyenBay bao gom ca ChuyenBay HUY.
+	*/
 	
 	float sale[5] = {0.1, 0.4, 0.25,};
 	SetBGColor(COLOR_BG_DEFAULT);
@@ -123,10 +125,24 @@ void case_QLMB(short x1, short y1, short x2, short y2){
 				break;
 			case 3:
 				xoaKhung(X1+48, Y1+1, X2-2, Y2-2);
+				/*
+					MayBay co ChuyenBay CON_VE hoac HET_VE
+					thi khong the sua.
+					
+					MayBay co ChuyenBay da PUBLIC thi
+					khong the sua. 
+				*/
 				dsmb.DHsuaMB(x2+8, y1+3 , X2-8, Y2-2);
 				break;
 			case 4:
 				xoaKhung(X1+48, Y1+1, X2-2, Y2-2);
+				/*
+					MayBay co ChuyenBay CON_VE hoac HET_VE
+					thi khong the xoa.
+					
+					MayBay co ChuyenBay da PUBLIC thi
+					khong the xoa. 
+				*/
 				dsmb.DHxoaMB(x2+8, y1+3 , X2-8, Y2-2);
 				break;
 			case 5:

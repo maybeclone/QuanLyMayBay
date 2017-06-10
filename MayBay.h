@@ -31,6 +31,7 @@ class MayBay
 	protected:
 		void deleteFirst();
 		void deleteAfter(NodeCB*);
+
 	public:
 		
 		void insert(ChuyenBay&);

@@ -177,9 +177,17 @@ void xoaKhung(short x1, short y1, short x2, short y2){
 	}
 }
 
-void veTable(int col, float* sale, short x1, short y1, short x2, short y2){
+void veTable(int col, float *sale, short x1, short y1, short x2, short y2){
+	/*	
+		col : so cot
+		sale : ti le giua cac cot
+		x1, y1: top left
+		x2, y2: right bottom
+	*/
 	
+	// vi tri mang sale
 	int dem=0;
+	// vi tri ve cot
 	int temp=x1+(x2-x1)*sale[0];
 	
 	SetBGColor(COLOR_BG_DEFAULT);
@@ -188,8 +196,12 @@ void veTable(int col, float* sale, short x1, short y1, short x2, short y2){
 	wcout<<TL_LINE;
 	gotoxy(x2, y1);
 	wcout<<TR_LINE;
+	
+	// VE PHAN TREN
 	for(int i=x1+1; i<x2;i++){
 		gotoxy(i, y1);
+		
+		// i = vi tri ve cot
 		if(i == temp && dem<col){
 			dem++;
 			temp=temp+sale[dem]*(x2-x1);
@@ -197,8 +209,11 @@ void veTable(int col, float* sale, short x1, short y1, short x2, short y2){
 		} else
 			wcout<<TB_LINE;
 	}
+	
+	// VE PHAN DUOI
 	dem=0;
 	temp=x1+(x2-x1)*sale[0];
+	
 	gotoxy(x1, y2);
 	wcout<<BL_LINE;
 	gotoxy(x2, y2);
@@ -213,6 +228,7 @@ void veTable(int col, float* sale, short x1, short y1, short x2, short y2){
 			wcout<<TB_LINE;
 	}
 	
+	// VE PHAN GIUA CAC COT
 	for(int i=y1+2; i<y2; i=i+2){
 		dem=0;
 		temp=x1+(x2-x1)*sale[0];
@@ -246,7 +262,8 @@ void veTable(int col, float* sale, short x1, short y1, short x2, short y2){
 	}
 	dem=0;
 	temp=x1+(x2-x1)*sale[0];
-		
+	
+	// VE PHAN GIUA CAC HANG
 	for(int j=x1; j<=x2;j++){
 		gotoxy(j, y2-1);
 		if(j == temp && dem<col){

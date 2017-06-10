@@ -1252,11 +1252,14 @@ void DSMB::xemMB_ALL(short x1, short y1, short x2, short y2){
 	// tinh vs in so trang
 	int soTrang = tinhSoTrang(size);
 	
+	// toa do in so trang
 	int x_td = (x1+x2)/2;
+	
 	for(int i=1; i<=soTrang; i++){
 		gotoxy(x_td-soTrang+3*i-2, y2+1);
 		wcout<<i;
 	}
+	// chon vi tri so 1
 	if(soTrang>0){
 		SetBGColor(COLOR_BG_ITEM_SELECTED);
 		SetColor(COLOR_TEXT_ITEM_SELECTED);
@@ -1279,7 +1282,7 @@ void DSMB::xemMB_ALL(short x1, short y1, short x2, short y2){
 				xoaKhung(x1, y1-2, x2, y2+1);
 				ShowCur(false);
 				return;
-			} else if(c==PAGE_UP && soTrang>1){
+			} else if(c==PAGE_UP && soTrang>1){  	// soTrang >1 trong TH khong co trang nao
 				SetBGColor(COLOR_BG_DEFAULT);
 				SetColor(COLOR_TEXT_DEFAULT);
 				gotoxy(x_td-soTrang+3*selection-2, y2+1);   wcout<<selection;
@@ -1290,7 +1293,7 @@ void DSMB::xemMB_ALL(short x1, short y1, short x2, short y2){
 				SetBGColor(COLOR_BG_ITEM_SELECTED);
 				SetColor(COLOR_TEXT_ITEM_SELECTED);
 				gotoxy(x_td-soTrang+3*selection-2, y2+1);   wcout<<selection;
-			} else if(c==PAGE_DOWN && soTrang>1){
+			} else if(c==PAGE_DOWN && soTrang>1){  	// soTrang >1 trong TH khong co trang nao
 				SetBGColor(COLOR_BG_DEFAULT);
 				SetColor(COLOR_TEXT_DEFAULT);
 				gotoxy(x_td-soTrang+3*selection-2, y2+1);   wcout<<selection;
