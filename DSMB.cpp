@@ -235,6 +235,7 @@ void DSMB::write(ofstream& fout){
 		
 		/* Khu con tro first. Trc khi luu FILE.
 		Luu xong dlieu MayBay tra con tro ve de luu CB.*/
+		
 		ds[i].setFirst(NULL);
 		fout.write((char*) &ds[i], sizeof(MayBay));
 		ds[i].setFirst(temp);

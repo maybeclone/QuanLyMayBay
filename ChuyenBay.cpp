@@ -202,11 +202,6 @@ void ChuyenBay::DHhieuchinhNgKhoiHanh(short x1, short y1, short x2, short y2){
 	gotoxy(x1+30, y1+10);
 	wcout<<"HH:mm";
 	
-	gotoxy(x1+18, y1+8);
-	ngKhoiHanh.xuatNgay();
-	gotoxy(x1+18, y1+10);
-	ngKhoiHanh.xuatGio();
-	
 	short x[2] = {x1+4, x1+23};
 	short y[2] = {y1+13, y1+13};
 	short CD = 15;
@@ -222,33 +217,6 @@ void ChuyenBay::DHhieuchinhNgKhoiHanh(short x1, short y1, short x2, short y2){
 	char phut[3];
 	int check;
 	
-	itoa(ngKhoiHanh.getNam(), nam, 10);
-	itoa(ngKhoiHanh.getThang(), thang, 10);
-	itoa(ngKhoiHanh.getNgay(), ngay, 10);
-	itoa(ngKhoiHanh.getGio(), gio, 10);
-	itoa(ngKhoiHanh.getPhut(), phut, 10);
-	
-	if(strlen(ngay)==1){
-		ngay[0] = (wchar_t) '0';
-		ngay[1] = (wchar_t) ngKhoiHanh.getNgay()+48;
-		ngay[2] ='\0';
-	}
-	if(strlen(thang)==1){
-		thang[0] = (wchar_t) '0';
-		thang[1] = (wchar_t) ngKhoiHanh.getThang()+48;
-		thang[2] = '\0';
-	}
-	if(strlen(gio)==1){
-		gio[0] = (wchar_t) '0';
-		gio[1] = (wchar_t) ngKhoiHanh.getGio()+48;
-		gio[2] = '\0';
-	}
-	if(strlen(phut)==1){
-		phut[0] = (wchar_t) '0';
-		phut[1] = (wchar_t) ngKhoiHanh.getPhut()+48;
-		gio[2] = '\0';
-	}
-	
 	time_t  theTime = time(NULL);
 	struct tm *aTime = localtime(&theTime);
 	int cur_nam = aTime->tm_year+1900;
@@ -256,6 +224,41 @@ void ChuyenBay::DHhieuchinhNgKhoiHanh(short x1, short y1, short x2, short y2){
 	int cur_ngay = aTime->tm_mday;
 	
 	while(true){
+		SetBGColor(COLOR_BG_DEFAULT);
+		SetColor(COLOR_TEXT_DEFAULT);
+		
+		gotoxy(x1+18, y1+8);
+		ngKhoiHanh.xuatNgSua();
+		gotoxy(x1+18, y1+10);
+		ngKhoiHanh.xuatGio();
+		
+		itoa(ngKhoiHanh.getNam(), nam, 10);
+		itoa(ngKhoiHanh.getThang(), thang, 10);
+		itoa(ngKhoiHanh.getNgay(), ngay, 10);
+		itoa(ngKhoiHanh.getGio(), gio, 10);
+		itoa(ngKhoiHanh.getPhut(), phut, 10);
+		
+		if(strlen(ngay)==1){
+			ngay[0] = (wchar_t) '0';
+			ngay[1] = (wchar_t) ngKhoiHanh.getNgay()+48;
+			ngay[2] ='\0';
+		}
+		if(strlen(thang)==1){
+			thang[0] = (wchar_t) '0';
+			thang[1] = (wchar_t) ngKhoiHanh.getThang()+48;
+			thang[2] = '\0';
+		}
+		if(strlen(gio)==1){
+			gio[0] = (wchar_t) '0';
+			gio[1] = (wchar_t) ngKhoiHanh.getGio()+48;
+			gio[2] = '\0';
+		}
+		if(strlen(phut)==1){
+			phut[0] = (wchar_t) '0';
+			phut[1] = (wchar_t) ngKhoiHanh.getPhut()+48;
+			gio[2] = '\0';
+		}
+		
 		ShowCur(true);
 		SetBGColor(COLOR_BG_ITEM);
 		SetColor(COLOR_TEXT_ITEM);

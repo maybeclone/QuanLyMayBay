@@ -6,6 +6,12 @@ void ShowCur(bool CursorVisibility){
     CONSOLE_CURSOR_INFO cursor = {1, CursorVisibility};
     SetConsoleCursorInfo(handle, &cursor);
 }
+/*
+	ma : chuoi
+	size: size max
+	n : size hien tai
+	c : ki tu muon them
+*/
 
 int them(char* ma, int size, int &n, char c){
 	if(n == size-1)
@@ -57,7 +63,12 @@ int checkMa_DEMO(char* ma, int size, int &n, char& c){
 		return 0;
 }
 
-// ma gom CHU CAI IN va chu so
+/*
+	1 : them dc, in ki tu ra
+	0 : khong them dc
+	3 : xoa, in ki tu ' '
+*/
+
 int nhapMa(char* ma, int size){
 	int n=0;
 	short x = wherex();
@@ -165,6 +176,12 @@ int nhapTen(char* ma, int size){
 	ma[n] = '\0';
 }
 
+/*
+	ma : chuoi muon sua
+	size: size max cua chuoi
+	_n: size hien gio
+*/
+
 int nhapTen_EDIT(char* ma, int size, int _n){
 	int n=_n;
 	short x = wherex();
@@ -271,6 +288,7 @@ int checkThang(int nam, int thang, int cur_nam, int cur_thang){
 	return 1;
 }
 
+
 int checkNgay(int nam, int thang, int ngay, int cur_nam, int cur_thang, int cur_ngay){
 	int months[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	if(checkNMNhuan(nam))
@@ -305,6 +323,9 @@ void ve1Ve(int soVe, short x, short y){
 	}
 }
 
+/*
+	Xoa ve trong Dsach ve mua
+*/
 void deleteViTri(int* soVe, int& size, int position){
 	for(int i=position; i<size-1; i++){
 		soVe[i] = soVe[i+1];

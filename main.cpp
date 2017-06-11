@@ -162,6 +162,11 @@ void case_QLMB(short x1, short y1, short x2, short y2){
 }
 
 void QLCB_suaCB(short x1, short y1, short x2, short y2){
+	/*
+		Khong the sua CB da HOAN_TAT hoac
+		da bi HUY.
+		Chi Hieu Chinh duoc Ngay/Gio khoi hanh
+	*/
 	
 	SetBGColor(COLOR_BG_DEFAULT);
 	SetColor(COLOR_TEXT_DEFAULT);
@@ -178,104 +183,117 @@ void QLCB_suaCB(short x1, short y1, short x2, short y2){
 	short CR = 3;
 	
 	char menu[2][15] = {"Xoa Het",
-						"Them MB"};
-						
-	SetBGColor(COLOR_BG_ITEM);
-	SetColor(COLOR_TEXT_ITEM);
-	veKhungItem(x[0], y[0], x[0]+CD, y[0]+CR);
-	gotoxy(x[0]+(CD/3), y[0]+1); wcout<<menu[0];
-	veKhungItem(x[1], y[1], x[1]+CD, y[1]+CR);
-	gotoxy(x[1]+(CD/3), y[1]+1); wcout<<menu[1];
+						"Xem MB"};
 		
-	ShowCur(true);
-	int check;
-	do{
-		gotoxy(x1+15, y1+2);
-		SetBGColor(COLOR_BG_DEFAULT);
-		SetColor(COLOR_TEXT_DEFAULT);
-		if(nhapMa(maCB, MAX_MA_CB)==ESC){
-			return;
-		}
-		check = dsmb.timCBdeSua_ALL(maCB, cb);
-		if(check!=10){
-			gotoxy(x1+10, y1+4);
-			SetBGColor(COLOR_BG_DEFAULT);
-			SetColor(COLOR_WARRING);
-		}
-		if(check==HOAN_TAT){
-			wcout<<"CHUYEN BAY DA HOAN TAT!   ";
-		} else if(check==HUY){
-			wcout<<"CHUYEN BAY DA BI HUY!     ";
-		} else if(check==-1){
-			wcout<<"KHONG TIM THAY CHUYEN BAY!";
-		}
-		if(check!=10){
+	while(true){
+		SetBGColor(COLOR_BG_ITEM);
+		SetColor(COLOR_TEXT_ITEM);
+		veKhungItem(x[0], y[0], x[0]+CD, y[0]+CR);
+		gotoxy(x[0]+(CD/3), y[0]+1); wcout<<menu[0];
+		veKhungItem(x[1], y[1], x[1]+CD, y[1]+CR);
+		gotoxy(x[1]+(CD/3), y[1]+1); wcout<<menu[1];
+		ShowCur(true);
+		int check;
+		do{
 			gotoxy(x1+15, y1+2);
 			SetBGColor(COLOR_BG_DEFAULT);
-			SetColor(COLOR_BG_DEFAULT);
-			wcout<<maCB;
-		}		
-	} while(check!=10);
-	gotoxy(x1+10, y1+4);
-	SetBGColor(COLOR_BG_DEFAULT);
-	SetColor(COLOR_BG_DEFAULT);
-	wcout<<"                           ";
-	ShowCur(false);
-	int selection = 2;
-	SetBGColor(COLOR_BG_ITEM_SELECTED);
-	SetColor(COLOR_TEXT_ITEM_SELECTED);
-	veKhungItem(x[selection-1], y[selection-1], x[selection-1]+CD, y[selection-1]+CR);
-	gotoxy(x[selection-1]+(CD/3), y[selection-1]+1); wcout<<menu[selection-1];
-	
-	char c=0;
-	while(c!=ESC && c!=ENTER){
-		c = getch();
-		if(c<0)
-			c = getch();
-		if(c==RIGHT || c==LEFT){
-			SetBGColor(COLOR_BG_ITEM);
-			SetColor(COLOR_TEXT_ITEM);
-			veKhungItem(x[selection-1], y[selection-1], x[selection-1]+CD, y[selection-1]+CR);
-			gotoxy(x[selection-1]+(CD/3), y[selection-1]+1); wcout<<menu[selection-1];
-		}
-		switch(c){
-			case RIGHT:
-				selection--;
-				if(selection == 0)
-					selection = 2;
-				SetBGColor(COLOR_BG_ITEM_SELECTED);
-				SetColor(COLOR_TEXT_ITEM_SELECTED);
-				veKhungItem(x[selection-1], y[selection-1], x[selection-1]+CD, y[selection-1]+CR);
-				gotoxy(x[selection-1]+(CD/3), y[selection-1]+1); wcout<<menu[selection-1];
-				break;
-			case LEFT:
-				selection++;
-				if(selection == 3)
-					selection = 1;
-				SetBGColor(COLOR_BG_ITEM_SELECTED);
-				SetColor(COLOR_TEXT_ITEM_SELECTED);
-				veKhungItem(x[selection-1], y[selection-1], x[selection-1]+CD, y[selection-1]+CR);
-				gotoxy(x[selection-1]+(CD/3), y[selection-1]+1); wcout<<menu[selection-1];
-				break;
-			case ESC:
+			SetColor(COLOR_TEXT_DEFAULT);
+			if(nhapMa(maCB, MAX_MA_CB)==ESC){
 				return;
-			case ENTER:
-				break;
 			}
+			check = dsmb.timCBdeSua_ALL(maCB, cb);
+			if(check!=10){
+				gotoxy(x1+10, y1+4);
+				SetBGColor(COLOR_BG_DEFAULT);
+				SetColor(COLOR_WARRING);
+			}
+			if(check==HOAN_TAT){
+				wcout<<"CHUYEN BAY DA HOAN TAT!   ";
+			} else if(check==HUY){
+				wcout<<"CHUYEN BAY DA BI HUY!     ";
+			} else if(check==-1){
+				wcout<<"KHONG TIM THAY CHUYEN BAY!";
+			}
+			if(check!=10){
+				gotoxy(x1+15, y1+2);
+				SetBGColor(COLOR_BG_DEFAULT);
+				SetColor(COLOR_BG_DEFAULT);
+				wcout<<maCB;
+			}		
+		} while(check!=10);
+		gotoxy(x1+10, y1+4);
+		SetBGColor(COLOR_BG_DEFAULT);
+		SetColor(COLOR_BG_DEFAULT);
+		wcout<<"                           ";
+		ShowCur(false);
+		int selection = 2;
+		SetBGColor(COLOR_BG_ITEM_SELECTED);
+		SetColor(COLOR_TEXT_ITEM_SELECTED);
+		veKhungItem(x[selection-1], y[selection-1], x[selection-1]+CD, y[selection-1]+CR);
+		gotoxy(x[selection-1]+(CD/3), y[selection-1]+1); wcout<<menu[selection-1];
+	
+		char c=0;
+		while(c!=ESC && c!=ENTER){
+			c = getch();
+			if(c<0)
+				c = getch();
+			if(c==RIGHT || c==LEFT){
+				SetBGColor(COLOR_BG_ITEM);
+				SetColor(COLOR_TEXT_ITEM);
+				veKhungItem(x[selection-1], y[selection-1], x[selection-1]+CD, y[selection-1]+CR);
+				gotoxy(x[selection-1]+(CD/3), y[selection-1]+1); wcout<<menu[selection-1];
+			}
+			switch(c){
+				case RIGHT:
+					selection--;
+					if(selection == 0)
+						selection = 2;
+					SetBGColor(COLOR_BG_ITEM_SELECTED);
+					SetColor(COLOR_TEXT_ITEM_SELECTED);
+					veKhungItem(x[selection-1], y[selection-1], x[selection-1]+CD, y[selection-1]+CR);
+					gotoxy(x[selection-1]+(CD/3), y[selection-1]+1); wcout<<menu[selection-1];
+					break;
+				case LEFT:
+					selection++;
+					if(selection == 3)
+						selection = 1;
+					SetBGColor(COLOR_BG_ITEM_SELECTED);
+					SetColor(COLOR_TEXT_ITEM_SELECTED);
+					veKhungItem(x[selection-1], y[selection-1], x[selection-1]+CD, y[selection-1]+CR);
+					gotoxy(x[selection-1]+(CD/3), y[selection-1]+1); wcout<<menu[selection-1];
+					break;
+				case ESC:
+					return;
+				case ENTER:
+					break;
+				}
+			}
+		switch(selection){
+			case 1:
+				break;
+			case 2:
+				xoaKhung(x1, y1, x2, y2);
+				cb->DHhieuchinhNgKhoiHanh(x1, y1-3, x2, y2+3);
+				ShowCur(false);
+				xoaKhung(x1, y1-3, x2, y2+3);
+				return;
 		}
-	switch(selection){
-		case 1:
-			break;
-		case 2:
-			xoaKhung(x1, y1, x2, y2);
-			cb->DHhieuchinhNgKhoiHanh(x1, y1-3, x2, y2+3);
-			ShowCur(false);
-			xoaKhung(x1, y1-3, x2, y2+3);
-			return;
+		gotoxy(x1+15, y1+2);
+		SetBGColor(COLOR_BG_DEFAULT);
+		SetColor(COLOR_BG_DEFAULT);
+		wcout<<maCB;
 	}
 }
 
 void QLCB_xoaCB(short x1, short y1, short x2, short y2){
+	
+	/*
+		co the xoa CB: 
+			1. Da HOAN_TAT
+			2. Da HUY
+			3. Da PUBLIC nhung chua ban dc ve nao.
+	*/
+	
 	SetBGColor(COLOR_BG_DEFAULT);
 	SetColor(COLOR_TEXT_DEFAULT);
 	veKhung(x1, y1, x2, y2);
@@ -388,6 +406,10 @@ void QLCB_xoaCB(short x1, short y1, short x2, short y2){
 }
 
 void QLCB_huyCB(short x1, short y1, short x2, short y2){
+/*
+	HUY ChuyenBay CON_VE va HET_VE
+*/
+
 	SetBGColor(COLOR_BG_DEFAULT);
 	SetColor(COLOR_TEXT_DEFAULT);
 	veKhung(x1, y1, x2, y2);

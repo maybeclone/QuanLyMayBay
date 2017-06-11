@@ -10,12 +10,14 @@ class DSMB
 	private:
 		int size;
 		MayBay ds[MAX_MB];
+
 	protected:
 		void delAtPosition(int);
 		int isDuplicate(char*);
 		void DHxuatMB(short x, short y, int selection);
 		void DH_MBthemCB(MayBay*, short, short, short, short);
 		int isDuplicateCB_All(char*);
+
 	public:
 		DSMB(int size=0);
 		

@@ -66,11 +66,17 @@ class Date
 			wcout<<setw(2)<<right<<ngay<<"/"<<setw(2)<<right<<thang<<"/"<<setw(4)<<setfill((wchar_t)'0')<<nam;
 			wcout<<setfill((wchar_t)' ');
 		}
-		
+			
 		void xuatNgay(){
 			wcout<<setw(2)<<setfill((wchar_t) '0')<<right<<ngay<<"/";
 			wcout<<setw(2)<<setfill((wchar_t) '0')<<right<<thang<<"/";
 			wcout<<setw(4)<<right<<nam;
+		}
+		
+		void xuatNgSua(){
+			wcout<<setw(4)<<right<<nam<<"/";
+			wcout<<setw(2)<<setfill((wchar_t) '0')<<right<<thang<<"/";
+			wcout<<setw(2)<<setfill((wchar_t) '0')<<right<<ngay;
 		}
 		
 		void xuatGio(){
