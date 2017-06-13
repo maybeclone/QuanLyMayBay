@@ -685,109 +685,109 @@ void QLCB_IntheoNgay(short x1, short y1, short x2, short y2){
 		ShowCur(true);
 				
 		SetBGColor(COLOR_BG_DEFAULT);
-				SetColor(COLOR_TEXT_DEFAULT);
-				gotoxy(X1+43, Y1+2);
-				wcout<<"/";
-				gotoxy(X1+46, Y1+2);
-				wcout<<"/";
-				gotoxy(X1+50, Y1+2);
-				wcout<<"(YYYY/MM/DD)";
+		SetColor(COLOR_TEXT_DEFAULT);
+		gotoxy(X1+43, Y1+2);
+		wcout<<"/";
+		gotoxy(X1+46, Y1+2);
+		wcout<<"/";
+		gotoxy(X1+50, Y1+2);
+		wcout<<"(YYYY/MM/DD)";
 
-			do{
-				
+		do{
+			SetColor(COLOR_TEXT_DEFAULT);
+			gotoxy(X1+39, Y1+2);
+			fflush(stdin);
+			if(nhapSo(nam, 5)==ESC)
+				return;
+			check = checkNam(atoi(nam), cur_nam);
+			if(!check){
+				gotoxy(X1+30, Y1+3);
+				SetColor(COLOR_WARRING);
+				wcout<<"NAM PHAI >= "<<cur_nam<<" VA <= "<<MAX_NAM;
 				gotoxy(X1+39, Y1+2);
-				fflush(stdin);
-				if(nhapSo(nam, 5)==ESC)
-					return;
-				check = checkNam(atoi(nam), cur_nam);
-				if(!check){
-					gotoxy(X1+30, Y1+3);
-					SetColor(COLOR_WARRING);
-					wcout<<"NAM PHAI >= "<<cur_nam<<" VA <= "<<MAX_NAM;
-					gotoxy(X1+39, Y1+2);
-					SetColor(COLOR_BG_DEFAULT);
-					wcout<<nam;
-				}
-			} while(!check);
-			gotoxy(X1+30, Y1+3);
-			SetColor(COLOR_BG_DEFAULT);
-			wcout<<"NAM PHAI >= "<<cur_nam<<" VA <= "<<MAX_NAM;
+				SetColor(COLOR_BG_DEFAULT);
+				wcout<<nam;
+			}
+		} while(!check);
+		gotoxy(X1+30, Y1+3);
+		SetColor(COLOR_BG_DEFAULT);
+		wcout<<"NAM PHAI >= "<<cur_nam<<" VA <= "<<MAX_NAM;
 
-			do{	
-				SetColor(COLOR_TEXT_DEFAULT);
-				gotoxy(X1+44, Y1+2);
-				fflush(stdin);
-				if(nhapSo(thang, 3)==ESC)
-					return;
-				check = checkThang(atoi(nam), atoi(thang), cur_nam, cur_thang);
-				if(check == -1){
-					gotoxy(X1+30, Y1+3);
-					SetColor(COLOR_BG_DEFAULT);
-					wcout<<"                                ";
-					gotoxy(X1+30, Y1+3);
-					SetColor(COLOR_WARRING);
-					wcout<<"THANG PHAI >= THANG "<<cur_thang<<" NAM "<<cur_nam;
-					gotoxy(X1+44, Y1+2);
-					SetColor(COLOR_BG_DEFAULT);
-					wcout<<thang;
-				} else if(check == 0){
-					gotoxy(X1+30, Y1+3);
-					SetColor(COLOR_BG_DEFAULT);
-					wcout<<"                                ";
-					gotoxy(X1+35, Y1+3);
-					SetColor(COLOR_WARRING);
-					wcout<<"NAM CO 12 THANG";
-					gotoxy(X1+44, Y1+2);
-					SetColor(COLOR_BG_DEFAULT);
-					wcout<<thang;
-				}
-			} while(check!=1);
-	
+		do{	
+			SetColor(COLOR_TEXT_DEFAULT);
 			gotoxy(X1+44, Y1+2);
+			fflush(stdin);
+			if(nhapSo(thang, 3)==ESC)
+				return;
+			check = checkThang(atoi(nam), atoi(thang), cur_nam, cur_thang);
+			if(check == -1){
+				gotoxy(X1+30, Y1+3);
+				SetColor(COLOR_BG_DEFAULT);
+				wcout<<"                                ";
+				gotoxy(X1+30, Y1+3);
+				SetColor(COLOR_WARRING);
+				wcout<<"THANG PHAI >= THANG "<<cur_thang<<" NAM "<<cur_nam;
+				gotoxy(X1+44, Y1+2);
+				SetColor(COLOR_BG_DEFAULT);
+				wcout<<thang;
+			} else if(check == 0){
+				gotoxy(X1+30, Y1+3);
+				SetColor(COLOR_BG_DEFAULT);
+				wcout<<"                                ";
+				gotoxy(X1+35, Y1+3);
+				SetColor(COLOR_WARRING);
+				wcout<<"NAM CO 12 THANG";
+				gotoxy(X1+44, Y1+2);
+				SetColor(COLOR_BG_DEFAULT);
+				wcout<<thang;
+			}
+		} while(check!=1);
+
+		gotoxy(X1+44, Y1+2);
+		SetColor(COLOR_TEXT_DEFAULT);
+		wcout<<setw(2)<<setfill((wchar_t)'0')<<right<<thang; 
+		
+		gotoxy(X1+30, Y1+3);
+		SetColor(COLOR_BG_DEFAULT);
+		wcout<<"                                ";
+	
+		do{
 			SetColor(COLOR_TEXT_DEFAULT);
-			wcout<<setw(2)<<setfill((wchar_t)'0')<<right<<thang; 
-			
-			gotoxy(X1+30, Y1+3);
-			SetColor(COLOR_BG_DEFAULT);
-			wcout<<"                                ";
-		
-			do{
-				SetColor(COLOR_TEXT_DEFAULT);
-				gotoxy(X1+47, Y1+2);
-				fflush(stdin);
-				if(nhapSo(ngay, 3)==ESC)
-					return;
-				check = checkNgay(atoi(nam), atoi(thang), atoi(ngay), cur_nam, cur_thang, cur_ngay);
-				if(check==0){
-					gotoxy(X1+30, Y1+3);
-					SetColor(COLOR_BG_DEFAULT);
-					wcout<<"                               ";
-					gotoxy(X1+30, Y1+3);
-					SetColor(COLOR_WARRING);
-					wcout<<"NGAY PHAI > NGAY "<<cur_ngay<<" THANG "<<cur_thang;
-					gotoxy(X1+47, Y1+2);
-					SetColor(COLOR_BG_DEFAULT);
-					wcout<<ngay;
-				} else if(check>=28){
-					gotoxy(X1+30, Y1+3);
-					SetColor(COLOR_BG_DEFAULT);
-					wcout<<"                               ";
-					gotoxy(X1+35, Y1+3);
-					SetColor(COLOR_WARRING);
-					wcout<<"THANG "<<thang<<" CO "<<check<<" NGAY ";
-					gotoxy(X1+47, Y1+2);
-					SetColor(COLOR_BG_DEFAULT);
-					wcout<<ngay;
-				}
-			} while(check!=1);
-		
 			gotoxy(X1+47, Y1+2);
-			SetColor(COLOR_TEXT_DEFAULT);
-			wcout<<setw(2)<<setfill((wchar_t)'0')<<right<<ngay; 
-			
-			gotoxy(X1+30, Y1+3);
-			SetColor(COLOR_BG_DEFAULT);
-			wcout<<"                               ";
+			fflush(stdin);
+			if(nhapSo(ngay, 3)==ESC)
+				return;
+			check = checkNgay(atoi(nam), atoi(thang), atoi(ngay), cur_nam, cur_thang, cur_ngay);
+			if(check==0){
+				gotoxy(X1+30, Y1+3);
+				SetColor(COLOR_BG_DEFAULT);
+				wcout<<"                               ";
+				gotoxy(X1+30, Y1+3);
+				SetColor(COLOR_WARRING);
+				wcout<<"NGAY PHAI > NGAY "<<cur_ngay<<" THANG "<<cur_thang;
+				gotoxy(X1+47, Y1+2);
+				SetColor(COLOR_BG_DEFAULT);
+				wcout<<ngay;
+			} else if(check>=28){
+				gotoxy(X1+30, Y1+3);
+				SetColor(COLOR_BG_DEFAULT);
+				wcout<<"                               ";
+				gotoxy(X1+35, Y1+3);
+				SetColor(COLOR_WARRING);
+				wcout<<"THANG "<<thang<<" CO "<<check<<" NGAY ";
+				gotoxy(X1+47, Y1+2);
+				SetColor(COLOR_BG_DEFAULT);
+				wcout<<ngay;
+			}
+		} while(check!=1);
+		
+		gotoxy(X1+47, Y1+2);
+		SetColor(COLOR_TEXT_DEFAULT);
+		wcout<<setw(2)<<setfill((wchar_t)'0')<<right<<ngay; 
+		
+		gotoxy(X1+30, Y1+3);
+		SetColor(COLOR_BG_DEFAULT);
+		wcout<<"                               ";
 		
 		ShowCur(false);
 		int selection = 2;
@@ -1774,13 +1774,7 @@ void DatVe_ChonVe(ChuyenBay* &cb){
 	SetBGColor(COLOR_BG_DEFAULT);
 	SetColor(COLOR_TEXT_DEFAULT);
 	system("cls");
-	SetBGColor(COLOR_BG_DEFAULT);
-	SetColor(COLOR_TEXT_DEFAULT);
-	veKhung(X1+23, Y1, X1+63, Y1+9);
 	
-	SetColor(COLOR_HIGHLIGHT_TEXT);
-	gotoxy(X1+28, Y1+2);
-	wcout<<"CMND: ";
 	
 	char CMND[MAX_CMND];
 	short x[2] = {X1+26, X1+45};
@@ -1794,13 +1788,21 @@ void DatVe_ChonVe(ChuyenBay* &cb){
 	
 	int check=-1;
 	while(true){
+		SetBGColor(COLOR_BG_DEFAULT);
+		SetColor(COLOR_TEXT_DEFAULT);
+		veKhung(X1+23, Y1, X1+63, Y1+9);
+	
+		SetColor(COLOR_HIGHLIGHT_TEXT);
+		gotoxy(X1+28, Y1+2);
+		wcout<<"CMND: ";
+		
 		SetBGColor(COLOR_BG_ITEM);
 		SetColor(COLOR_TEXT_ITEM);
 		veKhungItem(x[0], y[0], x[0]+CD, y[0]+CR);
 		gotoxy(x[0]+(CD/3), y[0]+1); wcout<<menu[0];
 		veKhungItem(x[1], y[1], x[1]+CD, y[1]+CR);
 		gotoxy(x[1]+(CD/3), y[1]+1); wcout<<menu[1];
-		int len;
+		int len=0;
 		do{
 			ShowCur(true);
 			gotoxy(X1+35, Y1+2);
@@ -1828,6 +1830,10 @@ void DatVe_ChonVe(ChuyenBay* &cb){
 				SetBGColor(COLOR_BG_DEFAULT);
 				SetColor(COLOR_SUCCESS);
 				wcout<<"HANH KHACH CHUA TON TAI!";
+				SetBGColor(COLOR_BG_ITEM_SELECTED);
+				SetColor(COLOR_BG_ITEM_SELECTED);
+				strcpy(menu[1], "Them HK");
+				gotoxy(x[1]+(CD/3), y[1]+1); wcout<<menu[1];
 			}
 			if(len<9){
 				gotoxy(X1+38, Y1+3);
@@ -1847,8 +1853,8 @@ void DatVe_ChonVe(ChuyenBay* &cb){
 		SetColor(COLOR_TEXT_ITEM_SELECTED);
 		veKhungItem(x[selection-1], y[selection-1], x[selection-1]+CD, y[selection-1]+CR);
 		gotoxy(x[selection-1]+(CD/3), y[selection-1]+1); wcout<<menu[selection-1];
-		
-		char c;
+	
+		char c=-1;
 		while(c!=ESC && c!=ENTER){
 			c = getch();
 			if(c<0)
@@ -1927,14 +1933,6 @@ void DatVe_ChonVe(ChuyenBay* &cb){
 				// xoa mang Ve
 				return;
 		}
-		gotoxy(X1+35, Y1+2);
-		SetBGColor(COLOR_BG_DEFAULT);
-		SetColor(COLOR_BG_DEFAULT);
-		wcout<<CMND;
-		gotoxy(X1+33, Y1+3);
-		SetBGColor(COLOR_BG_DEFAULT);
-		SetColor(COLOR_BG_DEFAULT);
-		wcout<<"                         ";
 	}	
 }
 
