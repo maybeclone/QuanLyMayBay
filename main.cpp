@@ -2120,7 +2120,6 @@ void case_DatVe(short x1, short y1, short x2, short y2){
 int main(){
 	_setmode(_fileno(stdout), _O_U16TEXT);
 	int selection = 1;
-
 	
 	// doc dlieu tu file
 	docDlieuFile();	

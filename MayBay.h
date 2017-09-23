@@ -15,7 +15,6 @@
 #include "dohoa.h"
 #include "Utility.h"
 
-
 using namespace std;
 
 #define MAX_SOHIEU_MB 6
